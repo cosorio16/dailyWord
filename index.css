@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+:root {
+  --azul: #145990;
+  --verde: #2ecc71;
+  --rojo: #d53d2d;
+  --blanco: #f7f7f7;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-wrap: balance;
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  text-align: center;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+main {
+  background-color: rgba(0, 0, 0, 0.864);
+  height: 100vh;
+  width: 100%;
+}
+
+h1 {
+  color: var(--blanco);
+}
+
+.box {
+  border: 1px solid white;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1;
+  font-size: 1.5rem;
+  color: var(--blanco);
+  font-weight: 1000;
+  display: grid;
+  place-content: center;
+}
+
+.inserted {
+  animation: inserted 0.333s linear;
+}
+
+.deleted {
+  animation: deleted 0.333s linear;
+}
+
+.container_game {
+  display: grid;
+  grid-template-columns: repeat(6, 50px);
+  grid-template-rows: repeat(6, 50px);
+  width: 100%;
+  max-width: 100vw;
+  gap: 5px;
+  height: 50%;
+  max-height: 50vh;
+  border: 1px solid blue;
+  place-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+.keyboard {
+  border: 1px solid var(--rojo);
+  height: 40%;
+}
+
+.correct {
+  background-color: var(--verde);
+}
+
+.incorrect {
+  background-color: var(--rojo);
+}
+
+.guess {
+  background-color: var(--azul);
+}
+
+.box:hover {
+  transform: scale(1.1);
+  transition: transform 0.444s cubic-bezier(0.19, 1, 0.22, 1);
+  cursor: none;
+}
+
+@keyframes inserted {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  25%,
+  75% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes deleted {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  25%,
+  75% {
+    transform: scale(0.9);
+  }
+}

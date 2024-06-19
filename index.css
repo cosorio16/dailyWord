@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+*::selection {
+  background-color: rgba(245, 222, 179, 0);
+}
+
 p {
   text-wrap: pretty;
 }
@@ -13,56 +17,173 @@ h1 {
 }
 
 body {
-  background-color: #0c0016;
+  width: 100vw;
+  height: 100vh;
+  max-height: 93vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 0 auto;
+  padding: 15px 0px 5px 0px;
+  background-color: #222222;
 }
 
 p,
 h1,
-.box {
+.box,
+button {
   color: #e8e4ff;
-  font-family: "Radio Canada Big", sans-serif;
+  font-family: "Aleo", serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
 
+button {
+  cursor: pointer;
+  background: none;
+}
+
+header {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px 15px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.068);
+}
+
+header div:last-child {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+header button {
+  border: none;
+  color: #cfcfcf;
+  transition: all 0.222s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+header button:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
 main {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.068);
+  gap: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+  height: 65vh;
+  align-items: center;
+  justify-content: center;
 }
 
 .row {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
   width: fit-content;
   margin: 0 auto;
 }
 
 .box {
-  width: 100px;
-  height: 100px;
-  border: 2px solid rgba(255, 255, 255, 0.445);
-  border-radius: 18px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 55px;
+  padding: 5px;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+  background-color: #2d2b2c;
+  border-radius: 50%;
   transition: all 0.444s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
+  border: 2px solid rgba(44, 44, 44, 0.171);
+  box-shadow: 2px 2px 2px 3px rgba(8, 8, 8, 0.315),
+    inset 2px 2px 2px 3px rgba(97, 97, 97, 0.041);
 }
 
 .box.active {
-  border: 2px solid #e8e4ff;
+  border: 2px solid #e8e4ff2c;
 }
 
 .box.correct {
-  background-color: green;
+  background-color: #5789f5;
+  box-shadow: 2px 2px 2px 3px #165ffc36, inset -2px -2px 2px 3px #00277a3b;
 }
 
 .box.unknown {
-  background-color: rgb(173, 150, 18);
+  background-color: #ffb347;
+  box-shadow: 2px 2px 2px 3px #ffa22027, inset -2px -2px 2px 3px #ffc06736;
 }
 .box.incorrect {
-  background-color: rgb(39, 41, 31);
+  background-color: #ee5d50;
+  box-shadow: 2px 2px 2px 3px rgba(145, 0, 0, 0.253),
+    inset -2px -2px 2px 3px rgba(145, 0, 0, 0.329);
+}
+
+.keyboard {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.068);
+  max-width: 600px;
+  flex-grow: 1;
+}
+
+.keyboard_row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 10px;
+}
+
+.keyboard_row .enter,
+.keyboard_row .delete {
+  min-width: 65px;
+  font-size: 0.9rem;
+}
+
+.keyboard_row button {
+  flex-basis: auto;
+  min-width: fit-content;
+  width: 100%;
+  max-width: 35px;
+  height: 35px;
+  border: 2px solid rgba(128, 128, 128, 0.486);
+  border-radius: 18px;
+  font-weight: 500;
+  display: grid;
+  place-content: center;
+  font-size: 1rem;
+  box-shadow: 2px 2px 2px 3px rgba(8, 8, 8, 0.315),
+    inset 2px 2px 2px 3px rgba(97, 97, 97, 0.041);
+}
+
+.enter {
+  background-color: #5789f5;
+  box-shadow: 2px 2px 2px 3px #165ffc36, inset -2px -2px 2px 3px #00277a3b;
+}
+
+.delete {
+  background-color: #ee5d50;
+  box-shadow: 2px 2px 2px 3px rgba(145, 0, 0, 0.253),
+    inset -2px -2px 2px 3px rgba(145, 0, 0, 0.329);
 }

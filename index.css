@@ -35,7 +35,7 @@ h1,
 .box,
 button {
   color: #e8e4ff;
-  font-family: "Aleo", serif;
+  font-family: "Baloo 2", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
@@ -65,7 +65,8 @@ header div:last-child {
 header button {
   border: none;
   color: #cfcfcf;
-  transition: all 0.222s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  transition: transform 0.222s cubic-bezier(0.55, 0.085, 0.68, 0.53),
+    color 0.222s cubic-bezier(0.55, 0.085, 0.68, 0.53);
 }
 
 header button:hover {
@@ -96,9 +97,10 @@ main {
 }
 
 .box {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   width: 55px;
+  height: 55px;
   padding: 5px;
   object-fit: cover;
   aspect-ratio: 1/1;
@@ -109,8 +111,7 @@ main {
   align-items: center;
   justify-content: center;
   border: 2px solid rgba(44, 44, 44, 0.171);
-  box-shadow: 2px 2px 2px 3px rgba(8, 8, 8, 0.315),
-    inset 2px 2px 2px 3px rgba(97, 97, 97, 0.041);
+  box-shadow: 2px 3px 0px 1px rgba(8, 8, 8, 0.151);
 }
 
 .box.active {
@@ -118,18 +119,20 @@ main {
 }
 
 .box.correct {
+  border: none;
   background-color: #5789f5;
-  box-shadow: 2px 2px 2px 3px #165ffc36, inset -2px -2px 2px 3px #00277a3b;
+  box-shadow: 2px 3px 0px 1px #2069f0;
 }
 
 .box.unknown {
+  border: none;
   background-color: #ffb347;
-  box-shadow: 2px 2px 2px 3px #ffa22027, inset -2px -2px 2px 3px #ffc06736;
+  box-shadow: 2px 3px 0px 1px #db9533;
 }
 .box.incorrect {
+  border: none;
   background-color: #ee5d50;
-  box-shadow: 2px 2px 2px 3px rgba(145, 0, 0, 0.253),
-    inset -2px -2px 2px 3px rgba(145, 0, 0, 0.329);
+  box-shadow: 2px 3px 0px 1px #c83d36;
 }
 
 .keyboard {
@@ -159,6 +162,7 @@ main {
 .keyboard_row .delete {
   min-width: 65px;
   font-size: 0.9rem;
+  border: none;
 }
 
 .keyboard_row button {
@@ -167,23 +171,27 @@ main {
   width: 100%;
   max-width: 35px;
   height: 35px;
-  border: 2px solid rgba(128, 128, 128, 0.486);
-  border-radius: 18px;
+  border: 2px solid rgba(128, 128, 128, 0.11);
+  border-radius: 10px;
   font-weight: 500;
   display: grid;
   place-content: center;
   font-size: 1rem;
-  box-shadow: 2px 2px 2px 3px rgba(8, 8, 8, 0.315),
-    inset 2px 2px 2px 3px rgba(97, 97, 97, 0.041);
+  box-shadow: 2px 3px 0px 1px rgba(8, 8, 8, 0.151);
+  background-color: #2d2b2c;
+  transition: all 0.111s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-.enter {
+.keyboard_row button:active {
+  transform: scale(0.9);
+}
+
+.keyboard_row .enter {
   background-color: #5789f5;
-  box-shadow: 2px 2px 2px 3px #165ffc36, inset -2px -2px 2px 3px #00277a3b;
+  box-shadow: 2px 3px 0px 1px #2069f0;
 }
 
-.delete {
+.keyboard_row .delete {
   background-color: #ee5d50;
-  box-shadow: 2px 2px 2px 3px rgba(145, 0, 0, 0.253),
-    inset -2px -2px 2px 3px rgba(145, 0, 0, 0.329);
+  box-shadow: 2px 3px 0px 1px #c83d36;
 }

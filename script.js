@@ -50,16 +50,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function writeLetter(letter) {
     if (position < limit * round) {
-      $boxes[position].textContent = letter.toUpperCase();
+      if ($boxes[position].textContent == "") {
+        $boxes[position].textContent = letter.toUpperCase();
+      }
     }
     position < limit * round - 1 && position++;
     activeLetter();
   }
 
   function deleteWord() {
-    $boxes[position].textContent = "";
     if (position > limit * (round - 1) && position < limit * round) {
-      position--;
+      if ($boxes[position].textContent != "") {
+        $boxes[position].textContent = "";
+      } else {
+        position--;
+        $boxes[position].textContent = "";
+      }
     }
   }
 
@@ -88,7 +94,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    console.log(guessLetter);
+    if (guessLetter.length == limit) {
+      console.log("YOU WIN");
+      setTimeout(() => {
+        resetGame();
+      }, 2000);
+    } else if (position == $boxes.length - 1) {
+      console.log("YOU LOSE");
+      setTimeout(() => {
+        resetGame();
+      }, 2000);
+    }
   }
 
   function resetGame() {

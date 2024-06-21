@@ -5,10 +5,6 @@ const header = document.querySelector("header");
 const main = document.querySelector("main");
 const boxes = document.querySelectorAll(".box");
 const toggleButton = document.getElementById("toggle-theme");
-
-let userPrefer = window.matchMedia("(prefers-color-scheme: dark)").matches;
-let icon = userPrefer;
-
 const lightIcon = `<svg width="29" height="29" viewBox="0 0 24 24">
   <path
     fill="currentColor"
@@ -18,8 +14,17 @@ const lightIcon = `<svg width="29" height="29" viewBox="0 0 24 24">
 
 const moonIcon = `<svg width="27" height="27" viewBox="0 0 16 16"><path fill="currentColor" d="M6 .278a.77.77 0 0 1 .08.858a7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316a.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"/></svg>`;
 
+let userPrefer = window.matchMedia("(prefers-color-scheme: dark)").matches;
+let theme = localStorage.getItem("theme");
+
+if (!theme) {
+  localStorage.setItem("theme", userPrefer);
+}
+
+let themeStatus = theme === "true";
+
 function handleIcon() {
-  if (icon) {
+  if (themeStatus) {
     toggleButton.innerHTML = lightIcon;
   } else {
     toggleButton.innerHTML = moonIcon;
@@ -32,12 +37,12 @@ function setThemeSystem(elements) {
   elements.forEach((element) => {
     if (element instanceof NodeList) {
       element.forEach((subElement) => {
-        userPrefer
+        theme === "true"
           ? subElement.classList.add("dark")
           : subElement.classList.add("light");
       });
     } else {
-      userPrefer
+      theme === "true"
         ? element.classList.add("dark")
         : element.classList.add("light");
     }
@@ -68,6 +73,7 @@ function toggleThemeMode(elements) {
 
 toggleButton.addEventListener("click", () => {
   toggleThemeMode([body, keyboard, keyboardRows, header, main, boxes]);
-  icon = !icon;
+  themeStatus = !themeStatus;
+  localStorage.setItem("theme", themeStatus);
   handleIcon();
 });

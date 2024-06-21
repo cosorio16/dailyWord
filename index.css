@@ -1,11 +1,17 @@
+:root {
+  --themeOne: "dark";
+  --themeTwo: "light";
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 *::selection {
-  background-color: rgba(245, 222, 179, 0);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 p {
@@ -27,7 +33,6 @@ body {
   gap: 20px;
   margin: 0 auto;
   padding: 15px 0px 5px 0px;
-  background-color: #222222;
 }
 
 p,
@@ -43,6 +48,12 @@ button {
 button {
   cursor: pointer;
   background: none;
+}
+
+button:focus,
+button:active {
+  background: initial;
+  outline: none;
 }
 
 header {
@@ -64,13 +75,12 @@ header div:last-child {
 
 header button {
   border: none;
-  color: #cfcfcf;
+
   transition: transform 0.222s cubic-bezier(0.55, 0.085, 0.68, 0.53),
     color 0.222s cubic-bezier(0.55, 0.085, 0.68, 0.53);
 }
 
 header button:hover {
-  color: #ffffff;
   transform: scale(1.1);
 }
 
@@ -104,32 +114,43 @@ main {
   padding: 5px;
   object-fit: cover;
   aspect-ratio: 1/1;
-  background-color: #2d2b2c;
   border-radius: 50%;
   transition: all 0.444s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid rgba(44, 44, 44, 0.171);
-  box-shadow: 2px 3px 0px 1px rgba(8, 8, 8, 0.151);
 }
 
-.box.active {
-  border: 2px solid #e8e4ff2c;
-}
-
-.box.correct {
+.box.dark.correct {
   border: none;
   background-color: #5789f5;
   box-shadow: 2px 3px 0px 1px #2069f0;
 }
 
-.box.unknown {
+.box.dark.unknown {
   border: none;
   background-color: #ffb347;
   box-shadow: 2px 3px 0px 1px #db9533;
 }
-.box.incorrect {
+.box.dark.incorrect {
+  border: none;
+  background-color: #ee5d50;
+  box-shadow: 2px 3px 0px 1px #c83d36;
+}
+
+
+.box.light.correct {
+  border: none;
+  background-color: #5789f5;
+  box-shadow: 2px 3px 0px 1px #2069f0;
+}
+
+.box.light.unknown {
+  border: none;
+  background-color: #ffb347;
+  box-shadow: 2px 3px 0px 1px #db9533;
+}
+.box.light.incorrect {
   border: none;
   background-color: #ee5d50;
   box-shadow: 2px 3px 0px 1px #c83d36;
@@ -171,14 +192,12 @@ main {
   width: 100%;
   max-width: 35px;
   height: 35px;
-  border: 2px solid rgba(128, 128, 128, 0.11);
   border-radius: 10px;
-  font-weight: 500;
+  font-weight: 600;
   display: grid;
   place-content: center;
   font-size: 1rem;
   box-shadow: 2px 3px 0px 1px rgba(8, 8, 8, 0.151);
-  background-color: #2d2b2c;
   transition: all 0.111s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
@@ -186,12 +205,91 @@ main {
   transform: scale(0.9);
 }
 
-.keyboard_row .enter {
+.keyboard_row.dark .enter {
   background-color: #5789f5;
   box-shadow: 2px 3px 0px 1px #2069f0;
 }
 
-.keyboard_row .delete {
+.keyboard_row.dark .delete {
   background-color: #ee5d50;
   box-shadow: 2px 3px 0px 1px #c83d36;
+}
+
+.keyboard_row.light .enter {
+  background-color: #5789f5;
+  box-shadow: 2px 3px 0px 1px #2069f0;
+}
+
+.keyboard_row.light .delete {
+  background-color: #ee5d50;
+  box-shadow: 2px 3px 0px 1px #c83d36;
+}
+
+body.dark {
+  background-color: #222222;
+}
+
+header.dark button {
+  color: #e0e0e0;
+}
+
+header.dark button:hover {
+  color: #ffffff;
+}
+
+.box.dark {
+  background-color: #2d2b2c;
+  color: #ffffff;
+  border: 2px solid rgba(44, 44, 44, 0.171);
+  box-shadow: 2px 3px 0px 1px rgba(8, 8, 8, 0.151);
+}
+
+.keyboard_row.dark button {
+  color: #e0e0e0;
+  background-color: #2d2b2c;
+  border: 2px solid rgba(128, 128, 128, 0.11);
+}
+
+.box.active.dark {
+  border: 2px solid #e8e4ff2c;
+}
+
+body.light {
+  background-color: #fcfcfc;
+}
+
+header.light button {
+  color: #222222;
+}
+
+header.light button:hover {
+  color: #000000;
+}
+
+.box.light {
+  background-color: #bababa;
+  color: #ffffff;
+  box-shadow: 2px 3px 0px 1px rgba(8, 8, 8, 0.103);
+}
+
+.keyboard_row.light button {
+  color: #222222;
+  background-color: #f0f0f0;
+  border: 2px solid rgba(128, 128, 128, 0.062);
+  box-shadow: 2px 3px 0px 1px rgba(8, 8, 8, 0.103);
+}
+
+.box.active.light {
+  border: 2px solid #e8e4ff2c;
+}
+
+.keyboard_row.light .enter,
+.keyboard_row.light .delete {
+  color: #ffffff;
+}
+
+header.light,
+main.light,
+.keyboard.light {
+  border: 1px solid rgba(2, 2, 2, 0.068);
 }

@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const $deleteKeyboard = document.querySelector(".delete");
   const $enterKeyboard = document.querySelector(".enter");
 
+  const $main = document.querySelector("main");
+
+
   $enterKeyboard.addEventListener("click", () => {
     if (
       position == limit * round - 1 &&

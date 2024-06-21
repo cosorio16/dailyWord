@@ -24,20 +24,20 @@ h1 {
 
 body {
   width: 100vw;
-  height: 100vh;
-  max-height: 93vh;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   margin: 0 auto;
-  padding: 15px 0px 5px 0px;
+  padding: 10px 2px 10px 2px;
 }
 
 p,
 h1,
 .box,
+.alert,
 button {
   color: #e8e4ff;
   font-family: "Baloo 2", sans-serif;
@@ -92,9 +92,10 @@ main {
   gap: 10px;
   max-width: 600px;
   margin: 0 auto;
-  height: 65vh;
+  height: 70vh;
   align-items: center;
   justify-content: center;
+  padding: 10px;
 }
 
 .row {
@@ -138,7 +139,6 @@ main {
   box-shadow: 2px 3px 0px 1px #c83d36;
 }
 
-
 .box.light.correct {
   border: none;
   background-color: #5789f5;
@@ -158,16 +158,17 @@ main {
 
 .keyboard {
   width: 100%;
+  max-width: 600px;
+  max-height: 200px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  max-width: 700px;
   margin: 0 auto;
-  padding: 5px;
+  padding: 3px;
   border: 1px solid rgba(255, 255, 255, 0.068);
-  max-width: 600px;
   flex-grow: 1;
+  height: 20vh;
 }
 
 .keyboard_row {
@@ -176,25 +177,29 @@ main {
   align-items: center;
   justify-content: center;
   height: 100%;
-  gap: 10px;
+  gap: 5px;
+  padding: 5px;
 }
 
 .keyboard_row .enter,
 .keyboard_row .delete {
-  min-width: 65px;
+  min-width: 60px;
+  margin: 0px 4px 0px 4px;
   font-size: 0.9rem;
   border: none;
+  transform: translateY(-2px);
+  padding: 0px 10px 0px 10px;
 }
 
 .keyboard_row button {
   flex-basis: auto;
-  min-width: fit-content;
   width: 100%;
-  max-width: 35px;
-  height: 35px;
-  border-radius: 10px;
+  min-width: fit-content;
+  max-width: 45px;
+  height: 100%;
   font-weight: 600;
   display: grid;
+  border-radius: 8px;
   place-content: center;
   font-size: 1rem;
   box-shadow: 2px 3px 0px 1px rgba(8, 8, 8, 0.151);
@@ -292,4 +297,65 @@ header.light,
 main.light,
 .keyboard.light {
   border: 1px solid rgba(2, 2, 2, 0.068);
+}
+
+.alert.win {
+  position: absolute;
+  top: calc(50% - 200px);
+  width: 30%;
+  height: 200px;
+  display: grid;
+  place-content: center;
+  font-weight: 500;
+  font-size: 3rem;
+  background-color: #5789f5;
+  box-shadow: 9px 10px 0px 1px #2069f0;
+  border-radius: 18px;
+}
+
+.alert.lose {
+  position: absolute;
+  top: calc(50% - 200px);
+  width: 30%;
+  height: 200px;
+  display: grid;
+  place-content: center;
+  font-weight: bold;
+  font-size: 3rem;
+  background-color: #ee5d50;
+  box-shadow: 9px 10px 0px 1px #c83d36;
+  border-radius: 18px;
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    height: 55vh;
+  }
+
+  .box {
+    width: 45px;
+    height: 45px;
+  }
+
+  .keyboard_row.dark .enter {
+    box-shadow: 1px 1px 0px 1px #2069f0;
+  }
+
+  .keyboard_row.dark .delete {
+    box-shadow: 1px 1px 0px 1px #c83d36;
+  }
+
+  .keyboard_row.light .enter {
+    box-shadow: 1px 1px 0px 1px #2069f0;
+  }
+
+  .keyboard_row.light .delete {
+    box-shadow: 1px 1px 0px 1px #c83d36;
+  }
+
+  .keyboard_row .enter,
+  .keyboard_row .delete {
+    min-width: 50px;
+    margin: 0px;
+  }
 }

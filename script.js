@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const $boxes = document.querySelectorAll(".box");
   const $letterButtons = document.querySelectorAll(".keyLetter");
   const $deleteKeyboard = document.querySelector(".delete");
   const $enterKeyboard = document.querySelector(".enter");
-
   const $main = document.querySelector("main");
-
+  const originalMain = $main.innerHTML;
+  const $boxes = document.querySelectorAll(".box");
 
   $enterKeyboard.addEventListener("click", () => {
     if (
@@ -98,12 +97,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (guessLetter.length == limit) {
-      console.log("YOU WIN");
       setTimeout(() => {
         resetGame();
       }, 2000);
     } else if (position == $boxes.length - 1) {
-      console.log("YOU LOSE");
       setTimeout(() => {
         resetGame();
       }, 2000);

@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function loadState() {
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < position; i++) {
       const state = JSON.parse(localStorage.getItem(`box${i}`));
 
       if (state) {

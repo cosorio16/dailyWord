@@ -71,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function compare() {
-    let letters = []
     let guessLetter = [];
     let correctLetters = [];
 

@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const $enterKeyboard = document.querySelector(".enter");
   const $main = document.querySelector("main");
   const $boxes = document.querySelectorAll(".box");
+  const $keys = document.querySelectorAll(".keyLetter");
 
   $enterKeyboard.addEventListener("click", () => {
     if (
@@ -71,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function compare() {
+    let savedLetter = [];
     let guessLetter = [];
     let correctLetters = [];
 
@@ -114,6 +116,10 @@ document.addEventListener("DOMContentLoaded", () => {
     $boxes.forEach((box) => {
       box.textContent = "";
       box.classList.remove("correct", "incorrect", "unknown");
+    });
+
+    $keys.forEach((key) => {
+      key.classList.remove("correct", "incorrect", "unknown");
     });
   }
 

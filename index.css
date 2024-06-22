@@ -197,7 +197,7 @@ main {
   min-width: fit-content;
   max-width: 45px;
   height: 100%;
-  font-weight: 600;
+  font-weight: bolder;
   display: grid;
   border-radius: 8px;
   place-content: center;
@@ -325,6 +325,24 @@ main.light,
   background-color: #ee5d50;
   box-shadow: 9px 10px 0px 1px #c83d36;
   border-radius: 18px;
+}
+
+.keyboard_row .keyLetter.correct {
+  color: white;
+  background-color: #5789f5;
+  border: 2px solid #2069f0;
+}
+
+.keyboard_row .keyLetter.incorrect {
+  color: white;
+  background-color: #ee5d50;
+  border: 2px solid #c83d36;
+}
+
+.keyboard_row .keyLetter.unknown {
+  color: white;
+  background-color: #ffb347;
+  border: 2px solid #db9533;
 }
 
 @media screen and (max-width: 600px) {

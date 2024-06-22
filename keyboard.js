@@ -25,19 +25,66 @@ const createButton = (content, isHTML = false, className = "") => {
 };
 
 firstRow.split("").forEach((l) => {
-  $keyboardRows[0].appendChild(createButton(l, false, 'keyLetter'));
+  $keyboardRows[0].appendChild(createButton(l, false, "keyLetter"));
 });
 
 secondRow.split("").forEach((l) => {
-  $keyboardRows[1].appendChild(createButton(l, false, 'keyLetter'));
+  $keyboardRows[1].appendChild(createButton(l, false, "keyLetter"));
 });
 
 const enterButton = createButton("Enter", false, "enter");
 $keyboardRows[2].appendChild(enterButton);
 
 thirdRow.split("").forEach((l) => {
-  $keyboardRows[2].appendChild(createButton(l, false, 'keyLetter'));
+  $keyboardRows[2].appendChild(createButton(l, false, "keyLetter"));
 });
 
 const deleteButton = createButton(deleteIcon, true, "delete");
 $keyboardRows[2].appendChild(deleteButton);
+
+const $keys = document.querySelectorAll(".keyLetter");
+const $boxes = document.querySelectorAll(".box");
+
+function syncKeyboard() {
+  let incorrectLetters = [];
+  let correctLetters = [];
+  let unknownLetters = [];
+
+  $boxes.forEach((box) => {
+    if (box.classList.contains("correct")) {
+      correctLetters.push(box.textContent);
+    } else if (box.classList.contains("incorrect")) {
+      incorrectLetters.push(box.textContent);
+    } else if (box.classList.contains("unknown")) {
+      unknownLetters.push(box.textContent);
+    }
+  });
+
+  $keys.forEach((key) => {
+    if (correctLetters.includes(key.textContent)) {
+      if (key.classList.contains("unknown")) {
+        key.classList.replace("unknown", "correct");
+      } else if (key.classList.contains("incorrect")) {
+        key.classList.replace("incorrect", "correct");
+      } else {
+        key.classList.add("correct");
+      }
+    } else if (incorrectLetters.includes(key.textContent)) {
+      key.classList.add("incorrect");
+    } else if (unknownLetters.includes(key.textContent)) {
+      key.classList.add("unknown");
+    }
+  });
+}
+
+document.addEventListener("keypress", (e) => {
+  if (e.key == "Enter") {
+    syncKeyboard();
+  }
+});
+
+enterButton.addEventListener("click", () => {
+  setTimeout(() => {
+    syncKeyboard();
+  }, 1);
+});

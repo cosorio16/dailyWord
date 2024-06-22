@@ -5,8 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const $boxes = document.querySelectorAll(".box");
   const $keys = document.querySelectorAll(".keyLetter");
 
-  loadState();
-
   $enterKeyboard.addEventListener("click", () => {
     if (
       position == limit * round - 1 &&
@@ -40,6 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let position = Number(localStorage.getItem("position")) || 0;
   let round = Number(localStorage.getItem("round")) || 1;
   const limit = letters.length;
+
+  loadState();
 
   function saveState() {
     for (let i = 0; i < position; i++) {

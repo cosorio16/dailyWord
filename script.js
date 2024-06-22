@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const $deleteKeyboard = document.querySelector(".delete");
   const $enterKeyboard = document.querySelector(".enter");
   const $main = document.querySelector("main");
-  const originalMain = $main.innerHTML;
   const $boxes = document.querySelectorAll(".box");
 
   $enterKeyboard.addEventListener("click", () => {
@@ -72,12 +71,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function compare() {
+    let letters = []
     let guessLetter = [];
+    let correctLetters = [];
 
     for (let i = limit * (round - 1); i < limit * round; i++) {
       if ($boxes[i].textContent == letters[i - limit * (round - 1)]) {
         $boxes[i].classList.add("correct");
         guessLetter.push($boxes[i].textContent);
+        correctLetters.push($boxes[i].textContent);
       } else {
         $boxes[i].classList.add("incorrect");
       }
@@ -96,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    if (guessLetter.length == limit) {
+    if (correctLetters.length == limit) {
       setTimeout(() => {
         resetGame();
       }, 2000);

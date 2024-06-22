@@ -1,5 +1,4 @@
 const $keyboardRows = document.querySelectorAll(".keyboard_row");
-
 const firstRow = "qwertyuiop";
 const secondRow = "asdfghjklñ";
 const thirdRow = "zxcvbnm";
@@ -69,13 +68,19 @@ function syncKeyboard() {
       } else {
         key.classList.add("correct");
       }
+    } else if (unknownLetters.includes(key.textContent)) {
+      key.classList.contains("incorrect")
+        ? key.classList.replace("incorrect", "unknown")
+        : key.classList.add("unknown");
     } else if (incorrectLetters.includes(key.textContent)) {
       key.classList.add("incorrect");
-    } else if (unknownLetters.includes(key.textContent)) {
-      key.classList.add("unknown");
     }
   });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  syncKeyboard();
+});
 
 document.addEventListener("keypress", (e) => {
   if (e.key == "Enter") {

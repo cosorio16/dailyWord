@@ -2,9 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const $letterButtons = document.querySelectorAll(".keyLetter");
   const $deleteKeyboard = document.querySelector(".delete");
   const $enterKeyboard = document.querySelector(".enter");
-  const $main = document.querySelector("main");
   const $boxes = document.querySelectorAll(".box");
   const $keys = document.querySelectorAll(".keyLetter");
+
+  loadState();
 
   $enterKeyboard.addEventListener("click", () => {
     if (
@@ -36,9 +37,41 @@ document.addEventListener("DOMContentLoaded", () => {
     letters.push(l.toUpperCase());
   });
 
-  let position = 0;
-  let round = 1;
+  let position = Number(localStorage.getItem("position")) || 0;
+  let round = Number(localStorage.getItem("round")) || 1;
   const limit = letters.length;
+
+  function saveState() {
+    for (let i = 0; i < position; i++) {
+      const state = {
+        text: $boxes[i].textContent,
+        classNames: $boxes[i].className,
+      };
+
+      localStorage.setItem(`box${i}`, JSON.stringify(state));
+      localStorage.setItem("position", position);
+      localStorage.setItem("round", round);
+    }
+  }
+
+  function loadState() {
+    for (let i = 0; i < 15; i++) {
+      const state = JSON.parse(localStorage.getItem(`box${i}`));
+
+      if (state) {
+        $boxes[i].textContent = state.text;
+        $boxes[i].className = state.classNames;
+      }
+    }
+  }
+
+  function deleteState() {
+    for (let i = 0; i < position; i++) {
+      localStorage.removeItem(`box${i}`);
+      localStorage.removeItem("position");
+      localStorage.removeItem("round");
+    }
+  }
 
   function activeLetter() {
     $boxes.forEach((box, index) => {
@@ -72,7 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function compare() {
-    let savedLetter = [];
     let guessLetter = [];
     let correctLetters = [];
 
@@ -99,6 +131,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
+    setTimeout(() => {
+      saveState();
+    }, 1);
+
     if (correctLetters.length == limit) {
       setTimeout(() => {
         resetGame();
@@ -111,6 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function resetGame() {
+    deleteState();
     position = 0;
     round = 1;
     $boxes.forEach((box) => {

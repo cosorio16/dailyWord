@@ -54,7 +54,6 @@ button {
 button:focus,
 button:active {
   background: initial;
-  outline: none;
 }
 
 header {
@@ -299,31 +298,100 @@ main.light,
   border: 1px solid rgba(2, 2, 2, 0.068);
 }
 
-.alert.win {
+.alert {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  gap: 5px;
+}
+
+.alert.in.win {
   position: absolute;
-  top: calc(50% - 200px);
-  width: 30%;
-  height: 200px;
-  display: grid;
-  place-content: center;
-  font-weight: 500;
-  font-size: 3rem;
+  top: calc(0% - 30px);
+  -webkit-animation: slide-bottom 0.5s ease-in-out both;
+  animation: slide-bottom 0.5s ease-in-out both;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 5px 10px 5px 10px;
   background-color: #5789f5;
-  box-shadow: 9px 10px 0px 1px #2069f0;
+  box-shadow: 2px 3px 1px 1px #2069f0;
   border-radius: 18px;
 }
 
-.alert.lose {
+.alert.out.win {
   position: absolute;
-  top: calc(50% - 200px);
-  width: 30%;
-  height: 200px;
-  display: grid;
-  place-content: center;
-  font-weight: bold;
-  font-size: 3rem;
+  top: calc(0% + 30px);
+  -webkit-animation: slide-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 5px 10px 5px 10px;
+  background-color: #5789f5;
+  box-shadow: 2px 3px 1px 1px #2069f0;
+  border-radius: 18px;
+}
+
+.alert.in.lose {
+  position: absolute;
+  top: calc(0% - 30px);
+  -webkit-animation: slide-bottom 0.5s ease-in-out both;
+  animation: slide-bottom 0.5s ease-in-out both;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 5px 10px 5px 10px;
   background-color: #ee5d50;
-  box-shadow: 9px 10px 0px 1px #c83d36;
+  box-shadow: 2px 3px 1px 1px #c83d36;
+  border-radius: 18px;
+}
+
+.alert.out.lose {
+  position: absolute;
+  top: calc(0% + 30px);
+  -webkit-animation: slide-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 5px 10px 5px 10px;
+  background-color: #ee5d50;
+  box-shadow: 2px 3px 1px 1px #c83d36;
+  border-radius: 18px;
+}
+
+.alert.in.unknown {
+  position: absolute;
+  top: calc(0% - 30px);
+  -webkit-animation: slide-bottom 0.5s ease-in-out both;
+  animation: slide-bottom 0.5s ease-in-out both;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 5px 10px 5px 10px;
+  background-color: #ffb347;
+  box-shadow: 2px 3px 1px 1px #db9533;
+  border-radius: 18px;
+}
+
+.alert.out.unknown {
+  position: absolute;
+  top: calc(0% - 10px);
+  -webkit-animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 5px 10px 5px 10px;
+  background-color: #ffb347;
+  box-shadow: 2px 3px 1px 1px #db9533;
   border-radius: 18px;
 }
 
@@ -375,5 +443,46 @@ main.light,
   .keyboard_row .delete {
     min-width: 50px;
     margin: 0px;
+  }
+}
+
+@-webkit-keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px);
+  }
+}
+@keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px);
+  }
+}
+@-webkit-keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
+  }
+}
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
   }
 }

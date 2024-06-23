@@ -73,6 +73,7 @@ function toggleThemeMode(elements) {
 
 toggleButton.addEventListener("click", () => {
   toggleThemeMode([body, keyboard, keyboardRows, header, main, boxes]);
+  toggleButton.blur();
   themeStatus = !themeStatus;
   localStorage.setItem("theme", themeStatus);
   handleIcon();

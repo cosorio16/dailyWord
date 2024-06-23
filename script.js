@@ -80,6 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadState();
 
+  position >= 30 && resetGame();
+
   function saveState() {
     for (let i = 0; i < position; i++) {
       const state = {

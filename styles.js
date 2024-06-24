@@ -25,16 +25,17 @@ const user = localStorage.getItem("user");
 if (!theme) {
   localStorage.setItem("theme", userPrefer);
 }
-
-if (!user) {
-  instructions.style = "display: flex";
-  instructions.style = "transform: scale(1)";
-  localStorage.setItem("user", true);
-} else {
-  instructions.style = "display: none";
-}
-
 let themeStatus = theme === "true";
+
+setThemeSystem([
+  body,
+  keyboard,
+  keyboardRows,
+  header,
+  main,
+  boxes,
+  instructions,
+]);
 
 function handleIcon() {
   toggleButton.forEach((b) => {
@@ -47,6 +48,13 @@ function handleIcon() {
 }
 
 handleIcon();
+
+if (!user) {
+  instructions.style = "transform: scale(1)";
+  localStorage.setItem("user", true);
+} else {
+  instructions.style = "transform: scale(0)";
+}
 
 playButton.addEventListener("click", () => {
   instructions.style = "transform: scale(0)";
@@ -71,16 +79,6 @@ function setThemeSystem(elements) {
     }
   });
 }
-
-setThemeSystem([
-  body,
-  keyboard,
-  keyboardRows,
-  header,
-  main,
-  boxes,
-  instructions,
-]);
 
 function toggleThemeMode(elements) {
   elements.forEach((element) => {

@@ -4,7 +4,11 @@ const keyboardRows = document.querySelectorAll(".keyboard_row");
 const header = document.querySelector("header");
 const main = document.querySelector("main");
 const boxes = document.querySelectorAll(".box");
-const toggleButton = document.getElementById("toggle-theme");
+const toggleButton = document.querySelectorAll(".toggle-theme");
+const instructions = document.querySelector(".instructions");
+const playButton = document.querySelector(".playButton");
+const helpButton = document.querySelector(".helpButton");
+
 const lightIcon = `<svg width="29" height="29" viewBox="0 0 24 24">
   <path
     fill="currentColor"
@@ -16,22 +20,41 @@ const moonIcon = `<svg width="27" height="27" viewBox="0 0 16 16"><path fill="cu
 
 let userPrefer = window.matchMedia("(prefers-color-scheme: dark)").matches;
 let theme = localStorage.getItem("theme");
+const user = localStorage.getItem("user");
 
 if (!theme) {
   localStorage.setItem("theme", userPrefer);
 }
 
+if (!user) {
+  instructions.style = "display: flex";
+  instructions.style = "transform: scale(1)";
+  localStorage.setItem("user", true);
+} else {
+  instructions.style = "display: none";
+}
+
 let themeStatus = theme === "true";
 
 function handleIcon() {
-  if (themeStatus) {
-    toggleButton.innerHTML = lightIcon;
-  } else {
-    toggleButton.innerHTML = moonIcon;
-  }
+  toggleButton.forEach((b) => {
+    if (themeStatus) {
+      b.innerHTML = lightIcon;
+    } else {
+      b.innerHTML = moonIcon;
+    }
+  });
 }
 
 handleIcon();
+
+playButton.addEventListener("click", () => {
+  instructions.style = "transform: scale(0)";
+});
+
+helpButton.addEventListener("click", () => {
+  instructions.style = "transform: scale(1)";
+});
 
 function setThemeSystem(elements) {
   elements.forEach((element) => {
@@ -49,7 +72,15 @@ function setThemeSystem(elements) {
   });
 }
 
-setThemeSystem([body, keyboard, keyboardRows, header, main, boxes]);
+setThemeSystem([
+  body,
+  keyboard,
+  keyboardRows,
+  header,
+  main,
+  boxes,
+  instructions,
+]);
 
 function toggleThemeMode(elements) {
   elements.forEach((element) => {
@@ -71,10 +102,20 @@ function toggleThemeMode(elements) {
   });
 }
 
-toggleButton.addEventListener("click", () => {
-  toggleThemeMode([body, keyboard, keyboardRows, header, main, boxes]);
-  toggleButton.blur();
-  themeStatus = !themeStatus;
-  localStorage.setItem("theme", themeStatus);
-  handleIcon();
+toggleButton.forEach((b) => {
+  b.addEventListener("click", () => {
+    toggleThemeMode([
+      body,
+      keyboard,
+      keyboardRows,
+      header,
+      main,
+      boxes,
+      instructions,
+    ]);
+    b.blur();
+    themeStatus = !themeStatus;
+    localStorage.setItem("theme", themeStatus);
+    handleIcon();
+  });
 });

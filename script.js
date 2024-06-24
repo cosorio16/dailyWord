@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const $keys = document.querySelectorAll(".keyLetter");
   const $alertMessage = document.querySelector(".alert");
 
+  const resetButton = document.querySelector(".resetGame");
+
   const winFeedBack = `<svg width="29" height="29" viewBox="0 0 24 24">
         <path
           fill="currentColor"
@@ -16,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       </svg>
       CONGRATULATIONS, YOU WIN`;
 
-  const loseFeedBack = `<svg width="25" height="25" viewBox="0 0 48 48"><path fill="currentColor" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="m6 11l5-5l13 13L37 6l5 5l-13 13l13 13l-5 5l-13-13l-13 13l-5-5l13-13z" clip-rule="evenodd"/></svg>
+  const loseFeedBack = `<svg width="20" height="20" viewBox="0 0 48 48"><path fill="currentColor" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="m6 11l5-5l13 13L37 6l5 5l-13 13l13 13l-5 5l-13-13l-13 13l-5-5l13-13z" clip-rule="evenodd"/></svg>
     SORRY, YOU LOSE`;
 
   const errorFeedBack = `<svg width="29" height="29" viewBox="0 0 24 24"><path fill="currentColor" d="M11.001 10h2v5h-2zM11 16h2v2h-2z"/><path fill="currentColor" d="M13.768 4.2C13.42 3.545 12.742 3.138 12 3.138s-1.42.407-1.768 1.063L2.894 18.064a1.986 1.986 0 0 0 .054 1.968A1.984 1.984 0 0 0 4.661 21h14.678c.708 0 1.349-.362 1.714-.968a1.989 1.989 0 0 0 .054-1.968zM4.661 19L12 5.137L19.344 19z"/></svg>
@@ -206,6 +208,10 @@ document.addEventListener("DOMContentLoaded", () => {
       key.classList.remove("correct", "incorrect", "unknown");
     });
   }
+
+  resetButton.addEventListener("click", () => {
+    resetGame();
+  });
 
   document.addEventListener("keydown", (e) => {
     if (e.key == e.key.match(/[a-z]/i)) {

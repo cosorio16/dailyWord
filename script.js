@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const $boxes = document.querySelectorAll(".box");
   const $keys = document.querySelectorAll(".keyLetter");
   const $alertMessage = document.querySelector(".alert");
-
   const resetButton = document.querySelector(".resetGame");
 
   const winFeedBack = `<svg width="29" height="29" viewBox="0 0 24 24">
+  
         <path
           fill="currentColor"
           fill-rule="evenodd"
@@ -25,24 +25,16 @@ document.addEventListener("DOMContentLoaded", () => {
   ERROR`;
 
   function feedBack(fb, val) {
-    $alertMessage.classList.remove("in", "out", "win", "lose", "unknown");
+    $alertMessage.classList.remove("in", "win", "lose", "unknown");
     $alertMessage.innerHTML = "";
     $alertMessage.innerHTML = fb;
+    $alertMessage.style = "transform :scale(1);";
     if (val == 1) {
       $alertMessage.classList.add("win", "in");
-      setTimeout(() => {
-        $alertMessage.classList.replace("in", "out");
-      }, 1500);
     } else if (val == 2) {
       $alertMessage.classList.add("lose", "in");
-      setTimeout(() => {
-        $alertMessage.classList.replace("in", "out");
-      }, 1500);
     } else if (val == 3) {
       $alertMessage.classList.add("unknown", "in");
-      setTimeout(() => {
-        $alertMessage.classList.replace("in", "out");
-      }, 1500);
     }
   }
 

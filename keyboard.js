@@ -79,7 +79,9 @@ function syncKeyboard() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  syncKeyboard();
+  setTimeout(() => {
+    syncKeyboard();
+  }, 1);
 });
 
 document.addEventListener("keypress", (e) => {

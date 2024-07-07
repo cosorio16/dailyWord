@@ -39,9 +39,11 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(40px);
+  backdrop-filter: blur(45px);
   font-size: 1rem;
-  transition: all .333s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.333s cubic-bezier(0.075, 0.82, 0.165, 1);
+  padding: 20px;
+  font-weight: 600;
 }
 
 .signature {
@@ -50,7 +52,7 @@ body {
 }
 
 .content_ins {
-  max-width: 600px;
+  max-width: 800px;
 }
 
 .instructions .content_ins svg {
@@ -85,29 +87,30 @@ ul {
 }
 
 li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   width: 33%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
 }
 
 .correct_box_example {
   font-size: 2rem;
-  width: 50px;
+  min-width: 50px;
   height: 50px;
   padding: 10px;
+  border-radius: 50%;
   display: grid;
   place-content: center;
   font-weight: bold;
   background-color: #5789f5;
   box-shadow: 2px 3px 0px 1px #2069f0;
-  border-radius: 5px;
   color: #e0e0e0;
 }
 
 .incorrect_box_example {
   font-size: 2rem;
-  width: 50px;
+  min-width: 50px;
   height: 50px;
   padding: 10px;
   display: grid;
@@ -115,13 +118,13 @@ li {
   font-weight: bold;
   background-color: #ee5d50;
   box-shadow: 2px 3px 0px 1px #c83d36;
-  border-radius: 5px;
+  border-radius: 50%;
   color: #e0e0e0;
 }
 
 .unknown_box_example {
   font-size: 2rem;
-  width: 50px;
+  min-width: 50px;
   height: 50px;
   padding: 10px;
   display: grid;
@@ -129,7 +132,7 @@ li {
   font-weight: bold;
   background-color: #ffb347;
   box-shadow: 2px 3px 0px 1px #db9533;
-  border-radius: 5px;
+  border-radius: 50%;
   color: #e0e0e0;
 }
 
@@ -431,30 +434,16 @@ main.light,
   align-items: center;
   width: fit-content;
   gap: 5px;
+  position: absolute;
 }
 
 .alert.in.win {
   position: absolute;
   top: calc(0% - 30px);
-  -webkit-animation: slide-bottom 0.5s ease-in-out both;
-  animation: slide-bottom 0.5s ease-in-out both;
+  -webkit-animation: slide-bottom 2s ease-in-out both;
+  animation: slide-bottom 2s ease-in-out both;
   z-index: 2;
-  backdrop-filter: blur(10px);
-  font-size: 1.2rem;
-  font-weight: 700;
-  padding: 5px 10px 5px 10px;
-  background-color: #5789f5;
-  box-shadow: 2px 3px 1px 1px #2069f0;
-  border-radius: 18px;
-}
 
-.alert.out.win {
-  position: absolute;
-  top: calc(0% + 30px);
-  -webkit-animation: slide-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: slide-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  z-index: 2;
-  backdrop-filter: blur(10px);
   font-size: 1.2rem;
   font-weight: 700;
   padding: 5px 10px 5px 10px;
@@ -466,25 +455,10 @@ main.light,
 .alert.in.lose {
   position: absolute;
   top: calc(0% - 30px);
-  -webkit-animation: slide-bottom 0.5s ease-in-out both;
-  animation: slide-bottom 0.5s ease-in-out both;
+  -webkit-animation: slide-bottom 2s ease-in-out both;
+  animation: slide-bottom 2s ease-in-out both;
   z-index: 2;
-  backdrop-filter: blur(10px);
-  font-size: 1.2rem;
-  font-weight: 700;
-  padding: 5px 10px 5px 10px;
-  background-color: #ee5d50;
-  box-shadow: 2px 3px 1px 1px #c83d36;
-  border-radius: 18px;
-}
 
-.alert.out.lose {
-  position: absolute;
-  top: calc(0% + 30px);
-  -webkit-animation: slide-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: slide-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  z-index: 2;
-  backdrop-filter: blur(10px);
   font-size: 1.2rem;
   font-weight: 700;
   padding: 5px 10px 5px 10px;
@@ -496,25 +470,10 @@ main.light,
 .alert.in.unknown {
   position: absolute;
   top: calc(0% - 30px);
-  -webkit-animation: slide-bottom 0.5s ease-in-out both;
-  animation: slide-bottom 0.5s ease-in-out both;
+  -webkit-animation: slide-bottom 2s ease-in-out both;
+  animation: slide-bottom 2s ease-in-out both;
   z-index: 2;
-  backdrop-filter: blur(10px);
-  font-size: 1.2rem;
-  font-weight: 700;
-  padding: 5px 10px 5px 10px;
-  background-color: #ffb347;
-  box-shadow: 2px 3px 1px 1px #db9533;
-  border-radius: 18px;
-}
 
-.alert.out.unknown {
-  position: absolute;
-  top: calc(0% - 10px);
-  -webkit-animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  z-index: 2;
-  backdrop-filter: blur(10px);
   font-size: 1.2rem;
   font-weight: 700;
   padding: 5px 10px 5px 10px;
@@ -542,6 +501,10 @@ main.light,
 }
 
 @media screen and (max-width: 600px) {
+  .instructions {
+    padding: 5px;
+  }
+
   .content_ins {
     padding: 20px;
   }
@@ -556,6 +519,13 @@ main.light,
 
   li {
     width: 100%;
+    justify-content: start;
+    flex-wrap: nowrap;
+    text-align: start;
+  }
+
+  li > p {
+    max-width: 100vw;
   }
 
   main {
@@ -587,46 +557,5 @@ main.light,
   .keyboard_row .delete {
     min-width: 50px;
     margin: 0px;
-  }
-}
-
-@-webkit-keyframes slide-bottom {
-  0% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  100% {
-    -webkit-transform: translateY(100px);
-    transform: translateY(100px);
-  }
-}
-@keyframes slide-bottom {
-  0% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  100% {
-    -webkit-transform: translateY(100px);
-    transform: translateY(100px);
-  }
-}
-@-webkit-keyframes slide-top {
-  0% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  100% {
-    -webkit-transform: translateY(-100px);
-    transform: translateY(-100px);
-  }
-}
-@keyframes slide-top {
-  0% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  100% {
-    -webkit-transform: translateY(-100px);
-    transform: translateY(-100px);
   }
 }

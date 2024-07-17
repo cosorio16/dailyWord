@@ -175,12 +175,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1);
 
     if (correctLetters.length == limit) {
-      feedBack(winFeedBack, 1);
+      
       setTimeout(() => {
         resetGame();
       }, 2000);
     } else if (position >= $boxes.length - 1) {
-      feedBack(loseFeedBack, 2);
+   
       setTimeout(() => {
         resetGame();
       }, 2000);
@@ -211,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (e.key == "Backspace") {
       deleteWord();
     } else if (e.key == "Enter" && position < limit * round - 1) {
-      feedBack(errorFeedBack, 3);
+  
     } else if (
       e.key == "Enter" &&
       position == limit * round - 1 &&

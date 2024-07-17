@@ -9,6 +9,8 @@ const instructions = document.querySelector(".instructions");
 const playButton = document.querySelector(".playButton");
 const helpButton = document.querySelector(".helpButton");
 
+const buttons = document.querySelectorAll("button");
+
 const lightIcon = `<svg width="29" height="29" viewBox="0 0 24 24">
   <path
     fill="currentColor"
@@ -111,9 +113,15 @@ toggleButton.forEach((b) => {
       boxes,
       instructions,
     ]);
-    b.blur();
+
     themeStatus = !themeStatus;
     localStorage.setItem("theme", themeStatus);
     handleIcon();
+  });
+});
+
+buttons.forEach((b) => {
+  b.addEventListener("click", () => {
+    b.blur();
   });
 });

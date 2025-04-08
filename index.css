@@ -19,7 +19,7 @@ h1 {
 
 body {
   width: 100vw;
-  height: 95vh;
+  height: 95dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,7 +34,7 @@ body {
   z-index: 2;
   position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -223,7 +223,7 @@ main {
   gap: 10px;
   max-width: 600px;
   margin: 0 auto;
-  height: 70vh;
+  height: 70dvh;
   align-items: center;
   justify-content: center;
   padding: 10px;
@@ -299,7 +299,7 @@ main {
   padding: 3px;
   border: 1px solid rgba(255, 255, 255, 0.068);
   flex-grow: 1;
-  height: 20vh;
+  height: 20dvh;
 }
 
 .keyboard_row {
@@ -529,7 +529,7 @@ main.light,
   }
 
   main {
-    height: 55vh;
+    height: 55dvh;
   }
 
   .box {
